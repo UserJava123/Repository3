@@ -1,4 +1,4 @@
-package kolorki.kolorki;
+package kolory.kolorki;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,9 +10,9 @@ public class RectRunnable implements Runnable {
 	private Field f;
 	private Field f1; Field f2; Field f3; Field f4;
 	private Graphics g;
-	private int probability;
+	private double probability;
 	
-	public RectRunnable(Field f, Field f1, Field f2, Field f3, Field f4, Graphics g, int probability) {
+	public RectRunnable(Field f, Field f1, Field f2, Field f3, Field f4, Graphics g, double probability) {
 		super();
 		this.f = f;
 		this.f1 = f1;
@@ -35,8 +35,8 @@ public class RectRunnable implements Runnable {
 	{
 		while(true) {
 		Random generator = new Random();
-		int p = generator.nextInt(probability);
-		if(p == 0) {
+		double d = generator.nextDouble();
+		if(d < probability) {
 			int red = generator.nextInt(255);
 			int green = generator.nextInt(255);
 			int blue = generator.nextInt(255);
@@ -63,4 +63,54 @@ public class RectRunnable implements Runnable {
 	public void setG(Graphics g) {
 		this.g = g;
 	}
+
+	public Field getF() {
+		return f;
+	}
+
+	public void setF(Field f) {
+		this.f = f;
+	}
+
+	public Field getF1() {
+		return f1;
+	}
+
+	public void setF1(Field f1) {
+		this.f1 = f1;
+	}
+
+	public Field getF2() {
+		return f2;
+	}
+
+	public void setF2(Field f2) {
+		this.f2 = f2;
+	}
+
+	public Field getF3() {
+		return f3;
+	}
+
+	public void setF3(Field f3) {
+		this.f3 = f3;
+	}
+
+	public Field getF4() {
+		return f4;
+	}
+
+	public void setF4(Field f4) {
+		this.f4 = f4;
+	}
+
+	public double getProbability() {
+		return probability;
+	}
+
+	public void setProbability(double probability) {
+		this.probability = probability;
+	}
+	
+	
 }

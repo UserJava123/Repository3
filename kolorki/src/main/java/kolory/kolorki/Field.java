@@ -1,4 +1,4 @@
-package kolorki.kolorki;
+package kolory.kolorki;
 
 import java.awt.Color;
 import java.awt.Graphics;

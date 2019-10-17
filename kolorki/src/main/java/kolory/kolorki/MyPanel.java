@@ -1,4 +1,4 @@
-package kolorki.kolorki;
+package kolory.kolorki;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -16,10 +16,10 @@ public class MyPanel extends JPanel{
 	
 	private Field field[][];
 	private List<RectRunnable> rrun = new ArrayList<RectRunnable>();
-	private int probability;
+	private double probability;
 	final static int FIELD_NUMBER = 20;
 	
-	public MyPanel(int probability)
+	public MyPanel(double probability)
 	{
 		setSize(FIELD_NUMBER * Field.FIELD_SIZE,FIELD_NUMBER * Field.FIELD_SIZE);
 		field = new Field[FIELD_NUMBER][FIELD_NUMBER];
@@ -55,7 +55,7 @@ public class MyPanel extends JPanel{
 		for(Field[] fi : field) {
 			for(Field f : fi)
 			{
-		getRrun().add(new RectRunnable(f,field[((y-1)%Field.FIELD_SIZE+Field.FIELD_SIZE)%Field.FIELD_SIZE][x],
+				getRrun().add(new RectRunnable(f,field[((y-1)%Field.FIELD_SIZE+Field.FIELD_SIZE)%Field.FIELD_SIZE][x],
 				field[(y+1)%Field.FIELD_SIZE][x],
 				field[y][((x-1)%Field.FIELD_SIZE+Field.FIELD_SIZE)%Field.FIELD_SIZE],
 				field[y][(x+1)%Field.FIELD_SIZE],this.getGraphics(),probability));
@@ -73,4 +73,26 @@ public class MyPanel extends JPanel{
 	public void setRrun(List<RectRunnable> rrun) {
 		this.rrun = rrun;
 	}
+
+	public Field[][] getField() {
+		return field;
+	}
+
+	public void setField(Field[][] field) {
+		this.field = field;
+	}
+
+	public double getProbability() {
+		return probability;
+	}
+
+	public void setProbability(double probability) {
+		this.probability = probability;
+		for (RectRunnable r: rrun)
+		{
+			r.setProbability(probability);
+		}
+	}
+	
+	
 }
